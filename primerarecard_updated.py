@@ -45,14 +45,19 @@ def k_medians_l1(X: np.ndarray, k: int, max_iter: int = 100, tol: float = 1e-6, 
 # -----------------------------
 # 1. Load Excel file
 # -----------------------------
-file_path = "Book2.xlsx"
+file_path = "Book3.xlsx"
 df = pd.read_excel(file_path)
-
+OUTPUT_FILE = "Book2_with_clusters.xlsx"
 # -----------------------------
 # 2. Select required columns
 # -----------------------------
 cols = ["age", "weight_kg", "mcharo_fender_ln_price", "short_name"]
 df = df[cols].dropna().reset_index(drop=True)
+df_sub = (
+    df[cols]
+    .dropna()
+    .reset_index(drop=False)   # keep original index!
+)
 
 # -----------------------------
 # 3. Run L1 clustering (clusters decide color)
@@ -74,6 +79,12 @@ clusters, centroids = k_medians_l1(X, k=k)
 # -----------------------------
 fig = plt.figure(figsize=(10, 7))
 ax = fig.add_subplot(111, projection="3d")
+df_sub["cluster"] = clusters
+
+df["cluster"] = np.nan
+df.loc[df_sub["index"], "cluster"] = df_sub["cluster"].values
+
+df.to_excel(OUTPUT_FILE, index=False)
 
 sc = ax.scatter(
     df["age"],
