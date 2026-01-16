@@ -45,9 +45,9 @@ def k_medians_l1(X: np.ndarray, k: int, max_iter: int = 100, tol: float = 1e-6, 
 # -----------------------------
 # 1. Load Excel file
 # -----------------------------
-file_path = "PrimeiraDivisionBook.xlsx"
+file_path = "PrimeraDivisionBook.xlsx"
 df = pd.read_excel(file_path)
-OUTPUT_FILE = "PrimeiraDivisionBook_with_clusters.xlsx"
+OUTPUT_FILE = "PrimeraDivisionBook_with_clusters.xlsx"
 # -----------------------------
 # 2. Select required columns
 # -----------------------------
