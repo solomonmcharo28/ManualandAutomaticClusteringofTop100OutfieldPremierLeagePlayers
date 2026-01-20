@@ -45,6 +45,7 @@ def k_medians_l1(X: np.ndarray, k: int, max_iter: int = 100, tol: float = 1e-6, 
 # -----------------------------
 # 1. Load Excel file
 # -----------------------------
+# Hint : Change the name of the Excel Work book and Output File to get results in a different league - Solomon Mcharo, Constance Develle, Brittany Quan, Jiaqi Paige, Claudia Sinclair and Madeline Young.
 file_path = "PrimeraDivisionBook.xlsx"
 df = pd.read_excel(file_path)
 OUTPUT_FILE = "PrimeraDivisionBook_with_clusters.xlsx"
